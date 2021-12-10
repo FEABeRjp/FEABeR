@@ -1,6 +1,6 @@
 ---
-name: 問題の提案
-about: このプロジェクトの問題を提案します
+name: Suggesting a problem
+about: Suggest a problem for this project
 title: ''
 labels: ''
 assignees: ''
