@@ -19,7 +19,7 @@ https://github.com/FEABeRjp/FEABeR
 
 * 検証問題の提案は `issue <https://github.com/FEABeRjp/FEABeR/issues/new/choose>`_ から行えます。
 * 質問や相談は `Discussions <https://github.com/FEABeRjp/FEABeR/discussions>`_ から行えます。
-* 検証結果やインプットの掲載はプルリクエストを送ってください。
+* 検証結果やインプットの掲載は `Pull Request <https://github.com/FEABeRjp/FEABeR/pulls>`_ から行えます。
 
 .. toctree::
    :maxdepth: 2
