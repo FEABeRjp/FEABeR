@@ -3,8 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to FEABeR's documentation!
+FEABeRについて
 ==================================
+
+FEABeRはオープンソースCAEコードを使用したベンチマーク結果を公開するプロジェクトです。FEABeRは"Finite Element Analysis Benchmark Report"の略称です。このプロジェクトではオープンソ－スCAEコードの検証結果をインプットともに公開し、オープンソースコードの実力とユーザーが検証を行うことの重要性を知ってもらうことを目的としています。
+FEABeRはこの目的を達成するために次の成果を公開します。
+
+* 検証問題の概要
+* 実行結果とリファレンス値の比較
+* 各検証対象コードのインプットファイル
+
+このプロジェクトは誰でも参加できます。私たちは次のリポジトリで作業をしています。
+
+https://github.com/FEABeRjp/FEABeR/discussions
+
+* 検証問題の提案は `issue <https://github.com/FEABeRjp/FEABeR/issues/new/choose>`_ から行えます。
+* 質問や相談は `Discussions <https://github.com/FEABeRjp/FEABeR/discussions>`_ からできます。
+* 検証結果やインプットの掲載はプルリクエストを送ってください。
 
 .. toctree::
    :maxdepth: 2
