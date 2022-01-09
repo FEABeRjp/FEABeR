@@ -18,7 +18,7 @@ FEABeRはこの目的を達成するために次の成果を公開します。
 https://github.com/FEABeRjp/FEABeR
 
 * 検証問題の提案は `issue <https://github.com/FEABeRjp/FEABeR/issues/new/choose>`_ から行えます。
-* 質問や相談は `Discussions <https://github.com/FEABeRjp/FEABeR/discussions>`_ からできます。
+* 質問や相談は `Discussions <https://github.com/FEABeRjp/FEABeR/discussions>`_ から行えます。
 * 検証結果やインプットの掲載はプルリクエストを送ってください。
 
 .. toctree::
