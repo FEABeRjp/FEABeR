@@ -1,4 +1,5 @@
 # FEABeRについて
+[![Documentation Status](https://readthedocs.org/projects/feaber/badge/?version=latest)](https://feaber.readthedocs.io/ja/latest/?badge=latest)
 
 [FEABeR](https://feaber.readthedocs.io/ja/latest/)はオープンソースのFEAコードを使用したベンチマーク結果を公開するプロジェクトです。FEABeRは"Finite Element Analysis Benchmark Report"の略称です。このプロジェクトではオープンソ－スFEAコードの検証結果を入力データともに公開し、オープンソースコードの品質を担保することを目的としています。
 FEABeRはこの目的を達成するために次の成果を公開します。
