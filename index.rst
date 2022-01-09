@@ -15,7 +15,7 @@ FEABeRはこの目的を達成するために次の成果を公開します。
 
 このプロジェクトは誰でも参加できます。私たちは次のリポジトリで作業をしています。
 
-https://github.com/FEABeRjp/FEABeR/discussions
+https://github.com/FEABeRjp/FEABeR
 
 * 検証問題の提案は `issue <https://github.com/FEABeRjp/FEABeR/issues/new/choose>`_ から行えます。
 * 質問や相談は `Discussions <https://github.com/FEABeRjp/FEABeR/discussions>`_ からできます。
