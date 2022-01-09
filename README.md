@@ -23,4 +23,8 @@ FEABeRのコンテンツはクリエイティブ・コモンズ 表示 4.0 国�
 
 * 追加的な制約は課せません — あなたは、このライセンスが他の者に許諾することを法的に制限するようないかなる法的規定も技術的手段 も適用してはなりません。
 
+<<<<<<< HEAD
 [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+=======
+[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+>>>>>>> master
