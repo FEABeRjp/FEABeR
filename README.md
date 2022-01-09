@@ -1,4 +1,5 @@
 # FEABeRについて
+[![Documentation Status](https://readthedocs.org/projects/feaber/badge/?version=latest)](https://feaber.readthedocs.io/ja/latest/?badge=latest)
 
 [FEABeR](https://feaber.readthedocs.io/ja/latest/)はオープンソースのFEAコードを使用したベンチマーク結果を公開するプロジェクトです。FEABeRは"Finite Element Analysis Benchmark Report"の略称です。このプロジェクトではオープンソ－スFEAコードの検証結果を入力データともに公開し、オープンソースコードの品質を担保することを目的としています。
 FEABeRはこの目的を達成するために次の成果を公開します。
@@ -16,10 +17,10 @@ FEABeRはこの目的を達成するために次の成果を公開します。
 # ライセンス
 FEABeRのコンテンツはクリエイティブ・コモンズ 表示 4.0 国際 ライセンスの下に公開されています。
 
-次の2つの条件下でコンテンツを共有および適合させることができます。
+あなたの従うべき条件は以下の通りです。
 
 * 表示 — あなたは 適切なクレジットを表示し、ライセンスへのリンクを提供し、変更があったらその旨を示さなければなりません。これらは合理的であればどのような方法で行っても構いませんが、許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。
 
 * 追加的な制約は課せません — あなたは、このライセンスが他の者に許諾することを法的に制限するようないかなる法的規定も技術的手段 も適用してはなりません。
 
-![license](https://licensebuttons.net/l/by/4.0/88x31.png)
+[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
