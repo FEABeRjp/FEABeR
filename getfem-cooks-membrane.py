@@ -19,12 +19,14 @@ F = 1.00/16.0  # Force density at the right boundary
 ###############################################################################
 # TODO: 三角形メッシュの方向を揃えられないか確認する。
 
-mesh = gf.Mesh("regular simplices", range(5), range(5))
+xn = 4
+yn = 4
+mesh = gf.Mesh("regular simplices", range(xn+1), range(yn+1))
 pts = mesh.pts()
 x = mesh.pts()[0, :]
 y = mesh.pts()[1, :]
-pts[0, :] = x * 44.0 / 4
-pts[1, :] = 44.0 / 4 * x + (44.0 - (44.0 - 16.0) / 4 * x) / 4 * y
+pts[0, :] = x * 44.0 / xn
+pts[1, :] = 44.0 / xn * x + (44.0 - (44.0 - 16.0) / xn * x) / yn * y
 mesh.set_pts(pts)
 
 ###############################################################################
@@ -83,11 +85,7 @@ result = pv.read("displacement.vtk")
 warped = result.warp_by_vector()
 
 plotter = pv.Plotter(off_screen=True)
-plotter.add_mesh(warped, scalars="Displacement", cmap='turbo', show_edges=True)
+plotter.add_mesh(warped, scalars="Displacement", cmap='turbo')
+plotter.add_text("Max:" + str(np.round(np.max(U), 2)str())
 plotter.show(cpos="xy", screenshot="displacement.png")
 
-###############################################################################
-# TODO: 参照値23.9と一致しているか確認する。
-print(U)
-
-print(U)
