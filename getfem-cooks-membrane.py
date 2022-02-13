@@ -86,6 +86,6 @@ warped = result.warp_by_vector()
 
 plotter = pv.Plotter(off_screen=True)
 plotter.add_mesh(warped, scalars="Displacement", cmap='turbo')
-plotter.add_text("Max:" + str(np.round(np.max(U), 2)str())
+plotter.add_text("Max:" + str(np.round(np.max(U), 2)))
 plotter.show(cpos="xy", screenshot="displacement.png")
 
