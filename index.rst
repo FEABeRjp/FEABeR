@@ -6,7 +6,7 @@
 FEABeRについて
 ==============
 
-FEABeRはオープンソースのFEAコードを使用したベンチマーク結果を公開するプロジェクトです。FEABeRは"Finite Element Analysis Benchmark Report"の略称です。このプロジェクトではオープンソ－スFEAコードの検証結果を入力データともに公開し、オープンソースコードの品質を担保することを目的としています。
+FEABeRはオープンソースのFEAコードを使用したベンチマーク結果を公開するプロジェクトです。FEABeRは"Finite Element Analysis Benchmark Report"の略称です。このプロジェクトではオープンソースFEAコードの検証結果を入力データともに公開し、オープンソースコードの品質を担保することを目的としています。
 FEABeRはこの目的を達成するために次の成果を公開します。
 
 * 検証問題の概要
@@ -22,7 +22,7 @@ https://github.com/FEABeRjp/FEABeR
 * 検証結果やインプットの掲載は `Pull Request <https://github.com/FEABeRjp/FEABeR/pulls>`_ から行えます。
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    usingcode.rst
