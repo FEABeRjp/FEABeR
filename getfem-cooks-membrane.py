@@ -19,73 +19,135 @@ F = 1.00/16.0  # Force density at the right boundary
 ###############################################################################
 # TODO: 三角形メッシュの方向を揃えられないか確認する。
 
-xn = 4
-yn = 4
-mesh = gf.Mesh("regular simplices", range(xn+1), range(yn+1))
-pts = mesh.pts()
-x = mesh.pts()[0, :]
-y = mesh.pts()[1, :]
-pts[0, :] = x * 44.0 / xn
-pts[1, :] = 44.0 / xn * x + (44.0 - (44.0 - 16.0) / xn * x) / yn * y
-mesh.set_pts(pts)
+xns = [2, 4, 8, 16]
+yns = [2, 4, 8, 16]
+meshs = []
+for xn, yn in zip(xns, yns):
+    mesh = gf.Mesh("regular simplices", range(xn+1), range(yn+1))
+    pts = mesh.pts()
+    x = mesh.pts()[0, :]
+    y = mesh.pts()[1, :]
+    pts[0, :] = x * 48.0 / xn
+    pts[1, :] = 44.0 / xn * x + (44.0 - (44.0 - 16.0) / xn * x) / yn * y
+    mesh.set_pts(pts)
+    meshs.append(mesh)
 
 ###############################################################################
 
-fb1 = mesh.outer_faces_with_direction([1.0, 0.0], 0.01)
-fb2 = mesh.outer_faces_with_direction([-1.0, 0.0], 0.01)
+for mesh in meshs:
+    fb1 = mesh.outer_faces_with_direction([1.0, 0.0], 0.01)
+    fb2 = mesh.outer_faces_with_direction([-1.0, 0.0], 0.01)
 
-RIGHT_BOUND = 1
-LEFT_BOUND = 2
+    RIGHT_BOUND = 1
+    LEFT_BOUND = 2
 
-mesh.set_region(RIGHT_BOUND, fb1)
-mesh.set_region(LEFT_BOUND, fb2)
+    mesh.set_region(RIGHT_BOUND, fb1)
+    mesh.set_region(LEFT_BOUND, fb2)
 
 ###############################################################################
 
-mesh.export_to_vtk("mesh.vtk", "ascii")
+meshs[0].export_to_vtk("mesh0.vtk", "ascii")
+meshs[1].export_to_vtk("mesh1.vtk", "ascii")
+meshs[2].export_to_vtk("mesh2.vtk", "ascii")
+meshs[3].export_to_vtk("mesh3.vtk", "ascii")
 
-grid = pv.read("mesh.vtk")
-points = grid.points
-plotter = pv.Plotter(off_screen=True)
-plotter.add_mesh(grid, show_edges=True)
-plotter.add_point_labels(
-    points, points.tolist(), point_size=10, font_size=10, always_visible=True
-)
+grid0 = pv.read("mesh0.vtk")
+grid1 = pv.read("mesh1.vtk")
+grid2 = pv.read("mesh2.vtk")
+grid3 = pv.read("mesh3.vtk")
+points0 = grid0.points
+points1 = grid1.points
+points2 = grid2.points
+points3 = grid3.points
+
+plotter = pv.Plotter(shape=(2, 2), off_screen=True)
+
+plotter.subplot(0, 0)
+plotter.add_text("2 x 2")
+plotter.add_mesh(grid0, show_edges=True)
+plotter.show_grid(grid="back", location="back", color="gray", all_edges=True)
+
+plotter.subplot(0, 1)
+plotter.add_text("4 x 4")
+plotter.add_mesh(grid1, show_edges=True)
+plotter.show_grid(grid="back", location="back", color="gray", all_edges=True)
+
+plotter.subplot(1, 0)
+plotter.add_text("8 x 8")
+plotter.add_mesh(grid2, show_edges=True)
+plotter.show_grid(grid="back", location="back", color="gray", all_edges=True)
+
+plotter.subplot(1, 1)
+plotter.add_text("16 x 16")
+plotter.add_mesh(grid3, show_edges=True)
+plotter.show_grid(grid="back", location="back", color="gray", all_edges=True)
+
 plotter.show(cpos="xy", screenshot="mesh.png")
 
 ###############################################################################
 
-mfu = gf.MeshFem(mesh, 2)
-mfu.set_classical_fem(elements_degree)
-mim = gf.MeshIm(mesh, elements_degree * 2)
+mfus = []
+mims = []
+for mesh in meshs:
+    mfu = gf.MeshFem(mesh, 2)
+    mfu.set_classical_fem(elements_degree)
+    mfus.append(mfu)
+    mim = gf.MeshIm(mesh, elements_degree * 2)
+    mims.append(mim)
 
 ###############################################################################
 
-md = gf.Model("real")
-md.add_fem_variable("u", mfu)
-md.add_initialized_data("E", [E])
-md.add_initialized_data("nu", [nu])
-md.add_initialized_data("F", [0.0, F])
-md.add_isotropic_linearized_elasticity_brick_pstress(mim, "u", "E", "nu")
-md.add_source_term_brick(mim, "u", "F", RIGHT_BOUND)
-md.add_Dirichlet_condition_with_simplification("u", LEFT_BOUND)
+mds = []
+for mfu, mim in zip(mfus, mims):
+    md = gf.Model("real")
+    md.add_fem_variable("u", mfu)
+    md.add_initialized_data("E", [E])
+    md.add_initialized_data("nu", [nu])
+    md.add_initialized_data("F", [0.0, F])
+    md.add_isotropic_linearized_elasticity_brick_pstress(mim, "u", "E", "nu")
+    md.add_source_term_brick(mim, "u", "F", RIGHT_BOUND)
+    md.add_Dirichlet_condition_with_simplification("u", LEFT_BOUND)
+    mds.append(md)
 
 ###############################################################################
 
-md.solve()
+for md in mds:
+    md.solve()
 
 ###############################################################################
 
-U = md.variable("u")
-mfu.export_to_vtk("displacement.vtk", "ascii", mfu, U, "Displacement")
+U0 = mds[0].variable("u")
+mfu.export_to_vtk("displacement0.vtk", "ascii", mfus[0], U0, "Displacement")
+U1 = mds[1].variable("u")
+mfu.export_to_vtk("displacement1.vtk", "ascii", mfus[1], U1, "Displacement")
+U2 = mds[2].variable("u")
+mfu.export_to_vtk("displacement2.vtk", "ascii", mfus[2], U2, "Displacement")
+U3 = mds[3].variable("u")
+mfu.export_to_vtk("displacement3.vtk", "ascii", mfus[3], U3, "Displacement")
 
 ###############################################################################
 
-result = pv.read("displacement.vtk")
-warped = result.warp_by_vector()
+result0 = pv.read("displacement0.vtk")
+warped0 = result0.warp_by_vector()
+result1 = pv.read("displacement1.vtk")
+warped1 = result1.warp_by_vector()
+result2 = pv.read("displacement2.vtk")
+warped2 = result2.warp_by_vector()
+result3 = pv.read("displacement3.vtk")
+warped3 = result3.warp_by_vector()
 
-plotter = pv.Plotter(off_screen=True)
-plotter.add_mesh(warped, scalars="Displacement", cmap='turbo')
-plotter.add_text("Max:" + str(np.round(np.max(U), 2)))
-plotter.show(cpos="xy", screenshot="displacement.png")
+plotter = pv.Plotter(shape=(2, 2), off_screen=True)
 
+plotter.subplot(0, 0)
+plotter.add_mesh(warped0, scalars="Displacement", cmap='turbo')
+plotter.add_text("Max:" + str(np.round(np.max(U0), 2)))
+plotter.subplot(0, 1)
+plotter.add_mesh(warped1, scalars="Displacement", cmap='turbo')
+plotter.add_text("Max:" + str(np.round(np.max(U1), 2)))
+plotter.subplot(1, 0)
+plotter.add_mesh(warped2, scalars="Displacement", cmap='turbo')
+plotter.add_text("Max:" + str(np.round(np.max(U2), 2)))
+plotter.subplot(1, 1)
+plotter.add_mesh(warped3, scalars="Displacement", cmap='turbo')
+plotter.add_text("Max:" + str(np.round(np.max(U3), 2)))
+plotter.show(cpos="xy", screenshot="displacement.png") 
