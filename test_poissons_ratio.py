@@ -5,6 +5,7 @@ import getfem as gf
 
 try:
     import pyvista as pv
+
     pv.set_plot_theme("document")
 except:
     print("\n\n** Could not load pyvista. Did you install it ?\n")
@@ -16,7 +17,7 @@ except:
 E = 1.0  # Young Modulus
 nus = [0.0, 0.2, 0.3, 0.4, 0.5]  # Poisson ratio
 elements_degree = 2  # Degree of the finite element methods
-F = 1.00/1.0  # Force density at the right boundary
+F = 1.00 / 1.0  # Force density at the right boundary
 
 ###############################################################################
 
@@ -27,7 +28,7 @@ mesh = gf.Mesh(
 ###############################################################################
 
 P = mesh.pts()
-ccenter = (abs(P[1,:] - 0.5) < 1e-6)
+ccenter = abs(P[1, :] - 0.5) < 1e-6
 pcenter = np.compress(ccenter, list(range(0, mesh.nbpts())))
 
 fb1 = mesh.outer_faces_with_direction([1.0, 0.0], 0.01)
@@ -53,7 +54,7 @@ m.plot(show_edges="True", cpos="xy")
 
 mfu = gf.MeshFem(mesh, 2)
 mfu.set_classical_fem(elements_degree)
-mim = gf.MeshIm(mesh, elements_degree*2)
+mim = gf.MeshIm(mesh, elements_degree * 2)
 
 ###############################################################################
 
@@ -71,10 +72,20 @@ for nu in nus:
     md.add_initialized_data("r3", [0.0, 0.0])
     md.add_initialized_data("H3", [[0.0, 0.0], [0.0, 1.0]])
     md.add_generalized_Dirichlet_condition_with_multipliers(
-        mim, "u", mfu, LEFT_BOUND, "r2", "H2",
+        mim,
+        "u",
+        mfu,
+        LEFT_BOUND,
+        "r2",
+        "H2",
     )
     md.add_generalized_Dirichlet_condition_with_multipliers(
-        mim, "u", mfu, CENTER_AXIS, "r3", "H3",
+        mim,
+        "u",
+        mfu,
+        CENTER_AXIS,
+        "r3",
+        "H3",
     )
     md.add_source_term_brick(mim, "u", "F", LEFT_BOUND)
     mds.append(md)
