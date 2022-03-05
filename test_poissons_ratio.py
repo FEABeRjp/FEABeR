@@ -156,4 +156,5 @@ p.add_mesh(d4.warp_by_vector(), line_width=2, scalars="Displacements", component
 p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
 p.camera.zoom(4.0)
+p.remove_scalar_bar()
 p.show(screenshot="Displacements.png")
