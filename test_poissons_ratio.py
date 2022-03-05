@@ -119,12 +119,6 @@ d2 = pv.read("displacement2.vtk")
 d3 = pv.read("displacement3.vtk")
 d4 = pv.read("displacement4.vtk")
 
-d0.set_active_vectors("Displacements")
-d1.set_active_vectors("Displacements")
-d2.set_active_vectors("Displacements")
-d3.set_active_vectors("Displacements")
-d4.set_active_vectors("Displacements")
-
 p = pv.Plotter(shape=(5, 1))
 p.subplot(0, 0)
 p.add_text("Poission's ratio = " + str(nus[0]), position="left_edge", font_size=9)
