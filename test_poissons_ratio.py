@@ -127,27 +127,27 @@ d4.set_active_vectors("Displacements")
 
 p = pv.Plotter(shape=(5, 1))
 p.subplot(0, 0)
-p.add_text("Poission's ratio = " + str(nus[0]))
+p.add_text("Poission's ratio = " + str(nus[0]), position="left_edge", font_size=9)
 p.add_mesh(d0.warp_by_vector(), line_width=2)
 p.camera_position = "xy"
 p.camera.zoom(4.0)
 p.subplot(1, 0)
-p.add_text("Poission's ratio = " + str(nus[1]))
+p.add_text("Poission's ratio = " + str(nus[1]), position="left_edge", font_size=9)
 p.add_mesh(d1.warp_by_vector(), line_width=2)
 p.camera_position = "xy"
 p.camera.zoom(4.0)
 p.subplot(2, 0)
-p.add_text("Poission's ratio = " + str(nus[2]))
+p.add_text("Poission's ratio = " + str(nus[2]), position="left_edge", font_size=9)
 p.add_mesh(d2.warp_by_vector(), line_width=2)
 p.camera_position = "xy"
 p.camera.zoom(4.0)
 p.subplot(3, 0)
-p.add_text("Poission's ratio = " + str(nus[3]))
+p.add_text("Poission's ratio = " + str(nus[3]), position="left_edge", font_size=9)
 p.add_mesh(d3.warp_by_vector(), line_width=2)
 p.camera_position = "xy"
 p.camera.zoom(4.0)
 p.subplot(4, 0)
-p.add_text("Poission's ratio = " + str(nus[4]))
+p.add_text("Poission's ratio = " + str(nus[4]), position="left_edge", font_size=9)
 p.add_mesh(d4.warp_by_vector(), line_width=2)
 p.camera_position = "xy"
 p.camera.zoom(4.0)
