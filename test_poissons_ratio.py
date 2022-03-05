@@ -120,35 +120,90 @@ d3 = pv.read("displacement3.vtk")
 d4 = pv.read("displacement4.vtk")
 
 p = pv.Plotter(shape=(5, 1))
+p.open_gif("Displacements.gif")
 p.subplot(0, 0)
 p.add_text("Poission's ratio = " + str(nus[0]), position="left_edge", font_size=9)
-p.add_mesh(d0.warp_by_vector(), line_width=2, scalars="Displacements", component=1)
-p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
+actor01 = p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(4.0)
+p.camera.zoom(1.0)
 p.subplot(1, 0)
 p.add_text("Poission's ratio = " + str(nus[1]), position="left_edge", font_size=9)
-p.add_mesh(d1.warp_by_vector(), line_width=2, scalars="Displacements", component=1)
-p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
+actor11 = p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(4.0)
+p.camera.zoom(1.0)
 p.subplot(2, 0)
 p.add_text("Poission's ratio = " + str(nus[2]), position="left_edge", font_size=9)
-p.add_mesh(d2.warp_by_vector(), line_width=2, scalars="Displacements", component=1)
-p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
+actor21 = p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(4.0)
+p.camera.zoom(1.0)
 p.subplot(3, 0)
 p.add_text("Poission's ratio = " + str(nus[3]), position="left_edge", font_size=9)
-p.add_mesh(d3.warp_by_vector(), line_width=2, scalars="Displacements", component=1)
-p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
+actor31 = p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(4.0)
+p.camera.zoom(1.0)
 p.subplot(4, 0)
 p.add_text("Poission's ratio = " + str(nus[4]), position="left_edge", font_size=9)
-p.add_mesh(d4.warp_by_vector(), line_width=2, scalars="Displacements", component=1)
-p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
+actor41 = p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(4.0)
-p.remove_scalar_bar()
-p.show(screenshot="Displacements.png")
+p.camera.zoom(1.0)
+p.remove_actor(actor01)
+p.remove_actor(actor11)
+p.remove_actor(actor21)
+p.remove_actor(actor31)
+p.remove_actor(actor41)
+
+for factor in np.linspace(0.0, 1.0, 5):
+    p.subplot(0, 0)
+    actor00 = p.add_mesh(
+        d0.warp_by_vector(factor=factor),
+        line_width=2,
+        scalars="Displacements",
+        component=1,
+    )
+    actor01 = p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
+    p.subplot(1, 0)
+    actor10 = p.add_mesh(
+        d1.warp_by_vector(factor=factor),
+        line_width=2,
+        scalars="Displacements",
+        component=1,
+    )
+    actor11 = p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
+    p.subplot(2, 0)
+    actor20 = p.add_mesh(
+        d2.warp_by_vector(factor=factor),
+        line_width=2,
+        scalars="Displacements",
+        component=1,
+    )
+    actor21 = p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
+    p.subplot(3, 0)
+    actor30 = p.add_mesh(
+        d3.warp_by_vector(factor=factor),
+        line_width=2,
+        scalars="Displacements",
+        component=1,
+    )
+    actor31 = p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
+    p.subplot(4, 0)
+    actor40 = p.add_mesh(
+        d4.warp_by_vector(factor=factor),
+        line_width=2,
+        scalars="Displacements",
+        component=1,
+    )
+    actor41 = p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
+    p.remove_scalar_bar()
+    p.render()
+    p.write_frame()
+    p.remove_actor(actor00)
+    p.remove_actor(actor01)
+    p.remove_actor(actor10)
+    p.remove_actor(actor11)
+    p.remove_actor(actor20)
+    p.remove_actor(actor21)
+    p.remove_actor(actor30)
+    p.remove_actor(actor31)
+    p.remove_actor(actor40)
+    p.remove_actor(actor41)
+p.close()
