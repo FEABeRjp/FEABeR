@@ -65,7 +65,7 @@ for nu in nus:
     md.add_initialized_data("E", [E])
     md.add_initialized_data("nu", [nu])
     md.add_initialized_data("F", [F, 0.0])
-    md.add_isotropic_linearized_elasticity_pstress_brick(mim, "u", "E", "nu")
+    md.add_isotropic_linearized_elasticity_brick_pstress(mim, "u", "E", "nu")
     md.add_source_term_brick(mim, "u", "F", RIGHT_BOUND)
     md.add_initialized_data("r2", [0.0, 0.0])
     md.add_initialized_data("H2", [[1.0, 0.0], [0.0, 0.0]])
