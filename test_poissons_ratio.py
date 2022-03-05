@@ -125,34 +125,34 @@ p.subplot(0, 0)
 p.add_text("Poission's ratio = " + str(nus[0]), position="left_edge", font_size=9)
 actor01 = p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(1.0)
+p.camera.zoom(2.0)
 p.subplot(1, 0)
 p.add_text("Poission's ratio = " + str(nus[1]), position="left_edge", font_size=9)
 actor11 = p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(1.0)
+p.camera.zoom(2.0)
 p.subplot(2, 0)
 p.add_text("Poission's ratio = " + str(nus[2]), position="left_edge", font_size=9)
 actor21 = p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(1.0)
+p.camera.zoom(2.0)
 p.subplot(3, 0)
 p.add_text("Poission's ratio = " + str(nus[3]), position="left_edge", font_size=9)
 actor31 = p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(1.0)
+p.camera.zoom(2.0)
 p.subplot(4, 0)
 p.add_text("Poission's ratio = " + str(nus[4]), position="left_edge", font_size=9)
 actor41 = p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
 p.camera_position = "xy"
-p.camera.zoom(1.0)
+p.camera.zoom(2.0)
 p.remove_actor(actor01)
 p.remove_actor(actor11)
 p.remove_actor(actor21)
 p.remove_actor(actor31)
 p.remove_actor(actor41)
 
-for factor in np.linspace(0.0, 1.0, 5):
+for factor in np.linspace(0.0, 1.0, 10):
     p.subplot(0, 0)
     actor00 = p.add_mesh(
         d0.warp_by_vector(factor=factor),
