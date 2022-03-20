@@ -1,0 +1,12 @@
+#
+# for solver
+#
+!MESH, NAME=fstrMSH, TYPE=HECMW-ENTIRE
+ cCPS6.msh
+!CONTROL, NAME=fstrCNT
+ cCPS6.cnt
+!RESULT, NAME=fstrRES, IO=OUT
+ cCPS6.res
+!RESULT, NAME=vis_out, IO=OUT
+ cCPS6_vis
+ 
