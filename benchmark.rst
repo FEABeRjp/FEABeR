@@ -8,6 +8,7 @@
    :caption: 構造:
 
    cooks-membrane.rst
+   elliptic_membrane.rst
 
 .. toctree::
    :maxdepth: 1
