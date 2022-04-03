@@ -9,7 +9,6 @@
 
    cooks-membrane.rst
    doc/structure/elliptic_membrane/elliptic_membrane.rst
-   doc/structure/linear_elastic_solid/linear_elastic_solid.rst
 
 .. toctree::
    :maxdepth: 1
