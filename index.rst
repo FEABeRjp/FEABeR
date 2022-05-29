@@ -25,6 +25,7 @@ https://github.com/FEABeRjp/FEABeR
    :maxdepth: 2
    :caption: Contents:
 
+   usingcode.rst
    benchmark.rst
 
 Indices and tables
