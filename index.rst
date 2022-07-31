@@ -26,7 +26,6 @@ https://github.com/FEABeRjp/FEABeR
    :caption: Contents:
 
    benchmark.rst
-   elliptic_membrane.rst
 
 Indices and tables
 ==================
