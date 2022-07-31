@@ -1,4 +1,13 @@
-###############################################################################
+"""
+.. _ref_test_poissons_ratio:
+
+Visualization of Poisson's ratio paraster by finite element method using GetFEM and PyVista
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I saw an educational post using Ansys regarding Poisson's ratio.
+I tried to reproduce it using GetFEM (a finite element analysis library) and PyVista.
+
+"""
 
 import numpy as np
 import getfem as gf
