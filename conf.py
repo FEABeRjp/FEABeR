@@ -10,7 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -62,8 +62,52 @@ html_logo = "feaber-logo.png"
 # html_static_path = ["_static"]
 
 
+os.environ['PYVISTA_BUILDING_GALLERY'] = 'true'
+
+from sphinx_gallery.sorting import FileNameSortKey
+
+
+class ResetPyvista:
+    """Reset pyvista module to default settings."""
+
+    def __call__(self, gallery_conf, fname):
+        """Reset pyvista module to default settings
+
+        If default documentation settings are modified in any example, reset here.
+        """
+        import pyvista
+
+        pyvista._wrappers['vtkPolyData'] = pyvista.PolyData
+        pyvista.set_plot_theme('document')
+
+    def __repr__(self):
+        return 'ResetPyvista'
+
+
+reset_pyvista = ResetPyvista()
 sphinx_gallery_conf = {
+    # convert rst to md for ipynb
+    "pypandoc": True,
+    # path to your examples scripts
     "examples_dirs": ["./examples/"],
     # path where to save gallery generated examples
-    "gallery_dirs": ["./examples"],
+    "gallery_dirs": ["examples"],
+    # Pattern to search for example files
+    "filename_pattern": r"\.py",
+    # Remove the "Download all examples" button from the top level gallery
+    "download_all_examples": False,
+    # Remove sphinx configuration comments from code blocks
+    "remove_config_comments": True,
+    # Sort gallery example by file name instead of number of lines (default)
+    "within_subsection_order": FileNameSortKey,
+    # directory where function granular galleries are stored
+    "backreferences_dir": None,
+    # Modules for which function level galleries are created.  In
+    "doc_module": "pyvista",
+    "image_scrapers": ("pyvista", "matplotlib"),
+    "first_notebook_cell": (
+        "%matplotlib inline\n" "from pyvista import set_plot_theme\n" "set_plot_theme('document')\n"
+    ),
+    "reset_modules": (reset_pyvista,),
+    "reset_modules_order": "both",
 }
