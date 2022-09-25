@@ -1,5 +1,8 @@
 import getfem as gf
 import numpy as np
+import pyvista as pv
+
+pv.set_plot_theme("document")
 
 mesh = gf.Mesh("empty", 2)
 gt = gf.GeoTrans("GT_QK(2,1)")
@@ -31,10 +34,14 @@ y = [
     2.299205780,
     2.750000000,
 ]
-mesh.add_convex(gt, [[x[0], x[1], x[2], x[3]], [y[0], y[1], y[2], y[3]]])
-mesh.add_convex(gt, [[x[4], x[5], x[6], x[7]], [y[4], y[5], y[6], y[7]]])
-mesh.add_convex(gt, [[x[8], x[0], x[3], x[9]], [y[8], y[0], y[3], y[9]]])
-mesh.add_convex(gt, [[x[10], x[5], x[0], x[8]], [y[10], y[5], y[0], y[8]]])
-mesh.add_convex(gt, [[x[5], x[10], x[11], x[6]], [y[5], y[10], y[11], y[6]]])
-mesh.add_convex(gt, [[x[5], x[4], x[1], x[0]], [y[5], y[4], y[1], y[0]]])
+mesh.add_convex(gt, [[x[0], x[1], x[3], x[2]], [y[0], y[1], y[3], y[2]]])
+mesh.add_convex(gt, [[x[4], x[5], x[7], x[6]], [y[4], y[5], y[7], y[6]]])
+mesh.add_convex(gt, [[x[8], x[0], x[9], x[3]], [y[8], y[0], y[9], y[3]]])
+mesh.add_convex(gt, [[x[10], x[5], x[8], x[0]], [y[10], y[5], y[8], y[0]]])
+mesh.add_convex(gt, [[x[5], x[10], x[6], x[11]], [y[5], y[10], y[6], y[11]]])
+mesh.add_convex(gt, [[x[5], x[4], x[0], x[1]], [y[5], y[4], y[0], y[1]]])
 mesh.save("quadrilateron.msh")
+mesh.export_to_vtk("quadrilateron.vtk", "ascii")
+
+m = pv.read("quadrilateron.vtk")
+m.plot(cpos="xy", show_edges=True, screenshot="quadrilateron.png")
