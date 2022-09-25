@@ -2,7 +2,7 @@ import getfem as gf
 import numpy as np
 
 mesh = gf.Mesh("empty", 2)
-gt = gf.GeoTrans("GT_LINEAR_PRODUCT(GT_PK(1,1),GT_PK(1,1))")
+gt = gf.GeoTrans("GT_QK(2,1)")
 x = [
     2.12968779,
     1.78302097,
