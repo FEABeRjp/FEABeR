@@ -1,5 +1,9 @@
 import getfem as gf
 import numpy as np
+import pyvista as pv
+
+pv.set_plot_theme("document")
+
 
 mesh = gf.Mesh("empty", 2)
 gt = gf.GeoTrans("GT_PK(2,1)")
@@ -44,3 +48,7 @@ mesh.add_convex(gt, [[x[10], x[11], x[6]], [y[10], y[11], y[6]]])
 mesh.add_convex(gt, [[x[1], x[0], x[4]], [y[1], y[0], y[4]]])
 mesh.add_convex(gt, [[x[5], x[4], x[0]], [y[5], y[4], y[0]]])
 mesh.save("triangle.msh")
+mesh.export_to_vtk("triangle.vtk", "ascii")
+
+m = pv.read("triangle.vtk")
+m.plot(cpos="xy", show_edges=True, screenshot="triangle.png")
