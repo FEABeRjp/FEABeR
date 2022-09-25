@@ -104,8 +104,8 @@ mesh.add_convex(gt, [[x[ 5], x[16], x[24], x[34]], [y[ 5], y[16], y[24], y[34]]]
 mesh.add_convex(gt, [[x[16], x[ 4], x[34], x[28]], [y[16], y[ 4], y[34], y[28]]])
 mesh.add_convex(gt, [[x[24], x[34], x[ 0], x[12]], [y[24], y[34], y[ 0], y[12]]])
 mesh.add_convex(gt, [[x[34], x[28], x[12], x[ 1]], [y[34], y[28], y[12], y[ 1]]])
-mesh.save("fine.msh")
-mesh.export_to_vtk("fine.vtk", "ascii")
+mesh.save("quadrilateron-fine.msh")
+mesh.export_to_vtk("quadrilateron-fine.vtk", "ascii")
 
-m = pv.read("fine.vtk")
-m.plot(cpos="xy", show_edges=True, screenshot="fine.png")
+m = pv.read("quadrilateron-fine.vtk")
+m.plot(cpos="xy", show_edges=True, screenshot="quadrilateron-fine.png")
