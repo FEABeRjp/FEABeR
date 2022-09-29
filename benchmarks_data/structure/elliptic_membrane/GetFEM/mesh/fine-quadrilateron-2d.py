@@ -377,4 +377,7 @@ plotter.add_mesh(
     line_width=3,
     color="black",
 )
+plotter.add_points(
+    mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
+)
 plotter.show(cpos="xy", screenshot="fine-quadrilateron-2d.png")
