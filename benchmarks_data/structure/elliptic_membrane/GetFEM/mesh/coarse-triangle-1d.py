@@ -4,7 +4,6 @@ import pyvista as pv
 
 pv.set_plot_theme("document")
 
-
 mesh = gf.Mesh("empty", 2)
 gt = gf.GeoTrans("GT_PK(2,1)")
 x = [
