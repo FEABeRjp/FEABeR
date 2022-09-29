@@ -5,11 +5,13 @@ import pyvista as pv
 pv.set_plot_theme("document")
 
 mesh = gf.Mesh("empty", 2)
-gt = gf.GeoTrans("GT_PRODUCT(GT_PK(1,2), GT_PK(1,2))")
-x = [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
-y = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]
-mesh.add_convex(gt, [[x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8]], [y[0], y[1], y[2], y[3], y[4], y[5], y[6], y[7], y[8]]])
-mesh.add_convex(gt, [[x[6], x[7], x[8], x[9], x[10], x[11], x[12], x[13], x[14]], [y[6], y[7], y[8], y[9], y[10], y[11], y[12], y[13], y[14]]])
+# gt = gf.GeoTrans("GT_PRODUCT(GT_PK(1,2), GT_PK(1,2))")
+# gt = gf.GeoTrans("GT_QK(2,2)")
+gt = gf.GeoTrans("GT_Q2_INCOMPLETE(2)")
+x = [0, 1, 2, 0, 2, 0, 1, 2, 0, 2, 0, 1, 2]
+y = [0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4]
+mesh.add_convex(gt, [[x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]], [y[0], y[1], y[2], y[3], y[4], y[5], y[6], y[7]]])
+mesh.add_convex(gt, [[x[5], x[6], x[7], x[8], x[9], x[10], x[11], x[12]], [y[5], y[6], y[7], y[8], y[9], y[10], y[11], y[12]]])
 #x = [
 #   2.12968779,
 #   1.78302097,
