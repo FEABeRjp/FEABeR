@@ -132,5 +132,17 @@ mesh.add_convex(gt, [[x[34], x[28], x[12]], [y[34], y[28], y[12]]])
 mesh.save("fine-triangle-1d.msh")
 mesh.export_to_vtk("fine-triangle-1d.vtk", "ascii")
 
-m = pv.read("fine-triangle-1d.vtk")
-m.plot(cpos="xy", show_edges=True, screenshot="fine-triangle-1d.png")
+mesh = pv.read("fine-triangle-1d.vtk")
+
+plotter = pv.Plotter()
+plotter.add_mesh(mesh)
+plotter.add_mesh(
+    mesh.separate_cells().extract_feature_edges(),
+    show_edges=True,
+    line_width=3,
+    color="black",
+)
+plotter.add_points(
+    mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
+)
+plotter.show(cpos="xy", screenshot="fine-triangle-1d.png")

@@ -43,5 +43,17 @@ mesh.add_convex(gt, [[x[5], x[4], x[0], x[1]], [y[5], y[4], y[0], y[1]]])
 mesh.save("coarse-quadrilateron-1d.msh")
 mesh.export_to_vtk("coarse-quadrilateron-1d.vtk", "ascii")
 
-m = pv.read("coarse-quadrilateron-1d.vtk")
-m.plot(cpos="xy", show_edges=True, screenshot="coarse-quadrilateron-1d.png")
+mesh = pv.read("coarse-quadrilateron-1d.vtk")
+
+plotter = pv.Plotter()
+plotter.add_mesh(mesh)
+plotter.add_mesh(
+    mesh.separate_cells().extract_feature_edges(),
+    show_edges=True,
+    line_width=3,
+    color="black",
+)
+plotter.add_points(
+    mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
+)
+plotter.show(cpos="xy", screenshot="coarse-quadrilateron-1d.png")

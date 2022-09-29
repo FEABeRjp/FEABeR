@@ -107,5 +107,17 @@ mesh.add_convex(gt, [[x[34], x[28], x[12], x[1]], [y[34], y[28], y[12], y[1]]])
 mesh.save("fine-quadrilateron-1d.msh")
 mesh.export_to_vtk("fine-quadrilateron-1d.vtk", "ascii")
 
-m = pv.read("fine-quadrilateron-1d.vtk")
-m.plot(cpos="xy", show_edges=True, screenshot="fine-quadrilateron-1d.png")
+mesh = pv.read("fine-quadrilateron-1d.vtk")
+
+plotter = pv.Plotter()
+plotter.add_mesh(mesh)
+plotter.add_mesh(
+    mesh.separate_cells().extract_feature_edges(),
+    show_edges=True,
+    line_width=3,
+    color="black",
+)
+plotter.add_points(
+    mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
+)
+plotter.show(cpos="xy", screenshot="fine-quadrilateron-1d.png")

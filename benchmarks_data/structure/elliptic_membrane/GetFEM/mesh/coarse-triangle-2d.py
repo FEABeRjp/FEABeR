@@ -146,59 +146,13 @@ mesh = pv.read("coarse-triangle-2d.vtk")
 
 plotter = pv.Plotter()
 plotter.add_mesh(mesh)
-labels = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30",
-    "31",
-    "32",
-    "33",
-    "34",
-    "35",
-]
-plotter.add_point_labels(
-    mesh.points,
-    labels,
-    italic=True,
-    font_size=20,
-    point_color="red",
-    point_size=20,
-    render_points_as_spheres=True,
-    always_visible=True,
-    shadow=True,
-)
 plotter.add_mesh(
     mesh.separate_cells().extract_feature_edges(),
     show_edges=True,
     line_width=3,
     color="black",
 )
-
+plotter.add_points(
+    mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
+)
 plotter.show(cpos="xy", screenshot="coarse-triangle-2d.png")

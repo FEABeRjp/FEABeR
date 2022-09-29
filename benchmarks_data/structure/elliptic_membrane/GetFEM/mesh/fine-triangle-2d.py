@@ -595,18 +595,6 @@ plotter.add_mesh(
     line_width=3,
     color="black",
 )
-# labels = ["29", "15", "38", "36", "37", "12"]
-# plotter.add_point_labels(
-#    mesh.points,
-#    labels,
-#    italic=True,
-#    font_size=20,
-#    point_color="red",
-#    point_size=20,
-#    render_points_as_spheres=True,
-#    always_visible=True,
-#    shadow=True,
-# )
 plotter.add_points(
     mesh.points, render_points_as_spheres=True, point_size=10.0, color="red"
 )
