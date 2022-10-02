@@ -32,7 +32,7 @@ mfrhs.set_classical_fem(elements_degree)
 
 mim = gf.MeshIm(mesh, elements_degree * 2)
 
-F = mfrhs.eval("[10.0, 0.0, 0.0, 1.0]")
+F = mfrhs.eval("[1.0, 0.0, 0.0, 1.0]")
 
 md = gf.Model("real")
 md.add_fem_variable("u", mfu)
