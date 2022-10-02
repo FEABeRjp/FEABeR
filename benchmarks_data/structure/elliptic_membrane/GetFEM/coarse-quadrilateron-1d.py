@@ -28,14 +28,14 @@ mfrhs.set_classical_fem(elements_degree)
 
 mim = gf.MeshIm(mesh, elements_degree * 2)
 
-F = mfrhs.eval("[10.0, 0.0, 0.0, 10.0]")
+F = mfrhs.eval("[10.0, 0.0, 0.0, 1.0]")
 
 md = gf.Model("real")
 md.add_fem_variable("u", mfu)
 md.add_initialized_fem_data("NeumannData", mfrhs, F)
 md.add_initialized_data("E", Emodulus)
 md.add_initialized_data("nu", nu)
-md.add_isotropic_linearized_elasticity_pstrain_brick(mim, "u", "E", "nu")
+md.add_isotropic_linearized_elasticity_pstress_brick(mim, "u", "E", "nu")
 md.add_normal_source_term_brick(mim, "u", "NeumannData", OUTER_BOUND)
 # md.add_source_term(mim, "(Reshape(NeumannData,qdim(u),meshdim)*Normal).Test_u", OUTER_BOUND)
 md.add_initialized_data("r1", [0, 0])
