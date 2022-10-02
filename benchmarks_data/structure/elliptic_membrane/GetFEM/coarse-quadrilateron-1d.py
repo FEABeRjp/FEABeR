@@ -58,4 +58,5 @@ grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
 mfu.export_to_vtk("displacement1.vtk", "ascii", mfu, U, "Displacements")
 print(mfu.eval("[x, y]"))
+print(md.rhs())
 print(sigmayy)
