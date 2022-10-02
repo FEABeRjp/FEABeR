@@ -2,8 +2,10 @@ import getfem as gf
 import numpy as np
 
 # Parameters
-Emodulus = 210000.0  # Young Modulus
+Emodulus = 210000.0  # Young Modulus (N/mm2)
 nu = 0.3  # Poisson Coefficient
+clambda = Emodulus * nu / ((1. + nu)*(1. - 2. * nu))
+mu = Emodulus / (2. * (1 + nu))
 
 mesh = gf.Mesh("load", "./mesh/coarse-quadrilateron-1d.msh")
 
@@ -22,8 +24,10 @@ mesh.set_region(OUTER_BOUND, fb3)
 elements_degree = 1
 
 mfu = gf.MeshFem(mesh, 2)
+mfd = gf.MeshFem(mesh, 1)
 mfrhs = gf.MeshFem(mesh, 2)
 mfu.set_classical_fem(elements_degree)
+mfd.set_classical_fem(elements_degree)
 mfrhs.set_classical_fem(elements_degree)
 
 mim = gf.MeshIm(mesh, elements_degree * 2)
@@ -48,4 +52,10 @@ md.add_generalized_Dirichlet_condition_with_multipliers(
 md.add_generalized_Dirichlet_condition_with_multipliers(
     mim, "u", mfu, BOTTOM_BOUND, "r2", "H2"
 )
-md.assembly("build_all")
+md.solve()
+U = md.variable("u")
+grad_u = gf.compute_gradient(mfu, U, mfd)
+sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
+mfu.export_to_vtk("displacement1.vtk", "ascii", mfu, U, "Displacements")
+print(mfu.eval("[x, y]"))
+print(sigmayy)
