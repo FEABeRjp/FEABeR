@@ -1,11 +1,14 @@
 import getfem as gf
 import numpy as np
+import pyvista as pv
+
+pv.set_plot_theme("document")
 
 # Parameters
 Emodulus = 210000.0  # Young Modulus (N/mm2)
 nu = 0.3  # Poisson Coefficient
-clambda = Emodulus * nu / ((1. + nu)*(1. - 2. * nu))
-mu = Emodulus / (2. * (1 + nu))
+clambda = Emodulus * nu / ((1.0 + nu) * (1.0 - 2.0 * nu))
+mu = Emodulus / (2.0 * (1 + nu))
 
 mesh = gf.Mesh("load", "./mesh/coarse-quadrilateron-1d.msh")
 
@@ -56,7 +59,9 @@ md.solve()
 U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
-mfu.export_to_vtk("displacement1.vtk", "ascii", mfu, U, "Displacements")
-print(mfu.eval("[x, y]"))
-print(md.rhs())
-print(sigmayy)
+mfu.export_to_vtk("coarse-quadrilateron-1d.vtk", "ascii", mfd, sigmayy * 10.0, "sigmayy")
+
+m = pv.read("coarse-quadrilateron-1d.vtk")
+pl = pv.Plotter()
+pl.add_mesh(m, show_edges=True, line_width=2)
+pl.show(cpos="xy")
