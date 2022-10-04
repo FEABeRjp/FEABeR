@@ -10,7 +10,7 @@ nu = 0.3  # Poisson Coefficient
 clambda = Emodulus * nu / ((1.0 + nu) * (1.0 - 2.0 * nu))
 mu = Emodulus / (2.0 * (1 + nu))
 
-mesh = gf.Mesh("load", "./mesh/coarse-quadrilateron-1d.msh")
+mesh = gf.Mesh("load", "./mesh/coarse-triangle-1d.msh")
 
 fb1 = mesh.outer_faces_with_direction([-1.0, 0.0], 0.01)
 fb2 = mesh.outer_faces_with_direction([0.0, -1.0], 0.01)
@@ -59,12 +59,12 @@ md.solve()
 U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
-mfu.export_to_vtk("coarse-quadrilateron-1d.vtk", "ascii", mfd, sigmayy, "sigmayy")
+mfu.export_to_vtk("coarse-triangle-1d.vtk", "ascii", mfd, sigmayy, "sigmayy")
 
-m = pv.read("coarse-quadrilateron-1d.vtk")
+m = pv.read("coarse-triangle-1d.vtk")
 pl = pv.Plotter()
 pl.add_mesh(m, show_edges=True, line_width=2, scalars="sigmayy")
 pl.add_point_scalar_labels(
     m, "sigmayy", point_size=10, font_size=20, fmt="%.2f", text_color="white"
 )
-pl.show(cpos="xy", screenshot="coarse-quadrilateron-1d.png")
+pl.show(cpos="xy", screenshot="coarse-triangle-1d.png")
