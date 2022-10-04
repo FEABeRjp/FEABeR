@@ -63,5 +63,6 @@ mfu.export_to_vtk("coarse-quadrilateron-1d.vtk", "ascii", mfd, sigmayy, "sigmayy
 
 m = pv.read("coarse-quadrilateron-1d.vtk")
 pl = pv.Plotter()
-pl.add_mesh(m, show_edges=True, line_width=2)
-pl.show(cpos="xy")
+pl.add_mesh(m, show_edges=True, line_width=2, scalars="sigmayy")
+pl.add_point_scalar_labels(m, "sigmayy", point_size=10, font_size=20, fmt="%.2f")
+pl.show(cpos="xy", screenshot="coarse-quadrilateron-1d.png")
