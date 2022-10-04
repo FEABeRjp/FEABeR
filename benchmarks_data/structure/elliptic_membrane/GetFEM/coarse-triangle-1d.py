@@ -64,7 +64,11 @@ mfu.export_to_vtk("coarse-triangle-1d.vtk", "ascii", mfd, sigmayy, "sigmayy")
 m = pv.read("coarse-triangle-1d.vtk")
 pl = pv.Plotter()
 pl.add_mesh(m, show_edges=True, line_width=2, scalars="sigmayy")
-pl.add_point_scalar_labels(
-    m, "sigmayy", point_size=10, font_size=20, fmt="%.2f", text_color="white"
+pl.add_point_labels(
+    m.points[np.all(m.points == [2.0, 0.0, 0.0], axis=1)],
+    [str(m["sigmayy"][np.all(m.points == [2.0, 0.0, 0.0], axis=1)][0])],
+    point_size=10,
+    font_size=20,
+    text_color="white",
 )
 pl.show(cpos="xy", screenshot="coarse-triangle-1d.png")
