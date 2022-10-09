@@ -69,7 +69,11 @@ m = pv.read("fine-quadrilateron-2d.vtk")
 pl = pv.Plotter()
 pl.add_mesh(m, show_edges=True, line_width=2, scalars="sigmayy")
 pl.add_point_labels(
-    m.points[20], [str(m["sigmayy"][20])], point_size=10, font_size=20, text_color="white",
+    m.points[20],
+    [str(m["sigmayy"][20])],
+    point_size=10,
+    font_size=20,
+    text_color="white",
 )
 
 for i in [42, 45, 47, 52, 54, 61, 63, 70, 84]:
