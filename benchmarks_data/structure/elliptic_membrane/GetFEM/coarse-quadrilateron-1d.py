@@ -62,7 +62,7 @@ U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
 mfu.export_to_vtk(
-    "coarse-quadrilateron-1d.vtk", "ascii", mfd, sigmayy, "sigmayy", mfu, RHS, "RHS"
+    "coarse-quadrilateron-1d.vtk", "ascii", mfd, sigmayy, "sigmayy", mfu, RHS, "RHS", U, "U"
 )
 
 m = pv.read("coarse-quadrilateron-1d.vtk")

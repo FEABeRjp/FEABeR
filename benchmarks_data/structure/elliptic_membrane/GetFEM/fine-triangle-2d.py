@@ -62,7 +62,7 @@ U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
 mfu.export_to_vtk(
-    "fine-triangle-2d.vtk", "ascii", mfd, sigmayy, "sigmayy", mfu, RHS, "RHS"
+    "fine-triangle-2d.vtk", "ascii", mfd, sigmayy, "sigmayy", mfu, RHS, "RHS", U, "U"
 )
 
 m = pv.read("fine-triangle-2d.vtk")
