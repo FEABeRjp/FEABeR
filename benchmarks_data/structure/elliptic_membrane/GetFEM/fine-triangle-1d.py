@@ -45,6 +45,8 @@ md.add_initialized_data("nu", nu)
 md.add_isotropic_linearized_elasticity_pstress_brick(mim, "u", "E", "nu")
 md.add_normal_source_term_brick(mim, "u", "NeumannData", OUTER_BOUND)
 # md.add_source_term(mim, "(Reshape(NeumannData,qdim(u),meshdim)*Normal).Test_u", OUTER_BOUND)
+md.assembly()
+RHS = md.rhs()
 md.add_initialized_data("r1", [0, 0])
 md.add_initialized_data("r2", [0, 0])
 md.add_initialized_data("H1", [[1, 0], [0, 0]])
@@ -59,16 +61,24 @@ md.solve()
 U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
 sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
-mfu.export_to_vtk("fine-triangle-1d.vtk", "ascii", mfd, sigmayy, "sigmayy")
+mfu.export_to_vtk(
+    "fine-triangle-1d.vtk", "ascii", mfd, sigmayy, "sigmayy", mfu, RHS, "RHS"
+)
 
 m = pv.read("fine-triangle-1d.vtk")
 pl = pv.Plotter()
 pl.add_mesh(m, show_edges=True, line_width=2, scalars="sigmayy")
 pl.add_point_labels(
-    m.points[np.all(m.points == [2.0, 0.0, 0.0], axis=1)],
-    [str(m["sigmayy"][np.all(m.points == [2.0, 0.0, 0.0], axis=1)][0])],
-    point_size=10,
-    font_size=20,
-    text_color="white",
+    m.points[8], [str(m["sigmayy"][8])], point_size=10, font_size=20, text_color="white"
 )
+
+for i in [18, 20, 22, 24, 26, 30, 32]:
+    pl.add_point_labels(
+        m.points[i],
+        ["( " + str(m["RHS"][:, 0][i]) + ", " + str(m["RHS"][:, 1][i]) + ") "],
+        point_size=10,
+        font_size=20,
+        text_color="white",
+    )
+
 pl.show(cpos="xy", screenshot="fine-triangle-1d.png")
