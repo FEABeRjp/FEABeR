@@ -76,7 +76,7 @@ pl.add_point_labels(
     text_color="white",
 )
 
-for i in [42, 45, 47, 52, 54, 61, 63, 70, 84]:
+for i in [42, 45, 47, 52, 54, 58, 61, 63, 70, 76, 78, 82, 84]:
     pl.add_point_labels(
         m.points[i],
         ["( " + str(m["RHS"][:, 0][i]) + ", " + str(m["RHS"][:, 1][i]) + ") "],
