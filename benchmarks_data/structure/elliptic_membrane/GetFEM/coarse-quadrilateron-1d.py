@@ -5,7 +5,8 @@ import pyvista as pv
 pv.set_plot_theme("document")
 
 # Parameters
-Emodulus = 210000.0 * 0.1  # Young Modulus (N/mm2) * depth(mm)
+epsilon = 0.1  # depth(mm)
+Emodulus = 210000.0 * epsilon  # Young Modulus (N/mm2) * depth(mm)
 nu = 0.3  # Poisson Coefficient
 clambda = Emodulus * nu / ((1.0 + nu) * (1.0 - 2.0 * nu))
 mu = Emodulus / (2.0 * (1 + nu))
@@ -35,7 +36,9 @@ mfrhs.set_classical_fem(elements_degree)
 
 mim = gf.MeshIm(mesh, elements_degree * 2)
 
-F = mfrhs.eval("[10.0 * 0.1, 0.0, 0.0, 10.0 * 0.1]")  # F (N/mm2) * depth (mm)
+F = mfrhs.eval(
+    "[10.0 * " + str(epsilon) + ", 0.0, 0.0, 10.0 * " + str(epsilon) + "]"
+)  # F (N/mm2) * depth (mm)
 
 md = gf.Model("real")
 md.add_fem_variable("u", mfu)
@@ -60,7 +63,7 @@ md.add_generalized_Dirichlet_condition_with_multipliers(
 md.solve()
 U = md.variable("u")
 grad_u = gf.compute_gradient(mfu, U, mfd)
-sigmayy = clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]
+sigmayy = (clambda * (grad_u[0, 0] + grad_u[1, 1]) + 2.0 * mu * grad_u[1, 1]) / epsilon
 mfu.export_to_vtk(
     "coarse-quadrilateron-1d.vtk",
     "ascii",
