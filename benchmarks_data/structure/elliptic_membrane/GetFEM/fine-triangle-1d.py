@@ -33,9 +33,10 @@ mfrhs = gf.MeshFem(mesh, 2)
 mfu.set_classical_fem(elements_degree)
 mfd.set_classical_fem(elements_degree)
 mfrhs.set_classical_fem(elements_degree)
-mfu.save("fine-triangle-1d.fem")
+mfu.save("fine-triangle-1d.mfu")
 
 mim = gf.MeshIm(mesh, elements_degree * 2)
+mim.save("fine-triangle-1d.mim")
 
 F = mfrhs.eval(
     "[10.0 * " + str(epsilon) + ", 0.0, 0.0, 10.0 * " + str(epsilon) + "]"
