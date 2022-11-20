@@ -185,3 +185,5 @@ Cantilevered tapered membrane
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode6.png
 
    Calculix 1nd order elements (mode6)
+
+Calculix1次要素のモード5と6は画像の掲載間違いではなく、出力されているモードは図の通りである。
