@@ -20,6 +20,8 @@
    :maxdepth: 1
    :caption: 熱:
 
+   doc/thermal/1d_heat_transfer_with_radiation/1d_heat_transfer_with_radiation.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: 他:
