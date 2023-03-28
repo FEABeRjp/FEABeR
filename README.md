@@ -1,3 +1,5 @@
+![logo](feaber-logo.png)
+
 # FEABeRについて
 [![Documentation Status](https://readthedocs.org/projects/feaber/badge/?version=latest)](https://feaber.readthedocs.io/ja/latest/?badge=latest)
 

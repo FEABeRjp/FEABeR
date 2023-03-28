@@ -1,0 +1,35 @@
+!VERSION
+ 3
+!SOLUTION, TYPE=STATIC
+!!
+!WRITE,RESULT
+!WRITE,VISUAL
+!!
+!BOUNDARY
+Set-1, 1, 1, 0.0
+!!
+!BOUNDARY
+Set-2, 2, 2, 0.0
+!! 
+!DLOAD
+!!Surf-1, S, -10.
+17,P3  , -10.
+21,P3, -10.
+25,P3, -10.
+29,P3, -10.
+ 36,P1 , -10.
+ 40,P1, -10.
+!!
+!! !MATERIAL, NAME=Material-1
+!! !ELASTIC
+!!  210000., 0.3
+!!
+!SOLVER,METHOD=CG,PRECOND=1,ITERLOG=YES,TIMELOG=YES
+ 10000, 1
+ 1.0e-8, 1.0, 0.0 
+!!
+!VISUAL,metod=PSR
+!surface_num=1
+!surface 1
+!output_type=VTK
+!END

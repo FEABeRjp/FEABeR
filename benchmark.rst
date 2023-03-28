@@ -8,14 +8,21 @@
    :caption: 構造:
 
    cooks-membrane.rst
+   doc/structure/elliptic_membrane/elliptic_membrane.rst
+   doc/structure/linear_elastic_solid/linear_elastic_solid.rst
+   elliptic_membrane.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: 振動:
 
+   doc/vibration/cantilevered_tapered_membrane/cantilevered_tapered_membrane.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: 熱:
+
+   doc/thermal/1d_heat_transfer_with_radiation/1d_heat_transfer_with_radiation.rst
 
 .. toctree::
    :maxdepth: 1

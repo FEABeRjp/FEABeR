@@ -1,0 +1,49 @@
+DEBUT(LANG='EN')
+
+
+mesh2 = LIRE_MAILLAGE(identifier='0:1',
+                      UNITE=20)
+
+model = AFFE_MODELE(identifier='1:1',
+                    AFFE=_F(MODELISATION=('C_PLAN', ),
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    MAILLAGE=mesh2)
+
+mater = DEFI_MATERIAU(identifier='2:1',
+                      ELAS=_F(E=210000.0,
+                              NU=0.3))
+
+fieldmat = AFFE_MATERIAU(identifier='3:1',
+                         AFFE=_F(MATER=(mater, ),
+                                 TOUT='OUI'),
+                         MAILLAGE=mesh2)
+
+load = AFFE_CHAR_MECA(identifier='4:1',
+                      DDL_IMPO=(_F(DX=0.0,
+                                   GROUP_NO=('FixX', )),
+                                _F(DY=0.0,
+                                   GROUP_NO=('FixY', ))),
+                      MODELE=model,
+                      PRES_REP=_F(GROUP_MA=('Press', ),
+                                  PRES=-10.0))
+
+reslin = MECA_STATIQUE(identifier='5:1',
+                       CHAM_MATER=fieldmat,
+                       EXCIT=_F(CHARGE=load),
+                       MODELE=model)
+
+reslin = CALC_CHAMP(identifier='6:1',
+                    reuse=reslin,
+                    CHAM_MATER=fieldmat,
+                    CONTRAINTE=('SIGM_ELNO', 'SIGM_NOEU'),
+                    CRITERES=('SIEQ_ELNO', 'SIEQ_NOEU'),
+                    DEFORMATION=('EPSI_NOEU', ),
+                    MODELE=model,
+                    RESULTAT=reslin)
+
+IMPR_RESU(identifier='7:1',
+          RESU=_F(RESULTAT=reslin),
+          UNITE=80)
+
+FIN()
