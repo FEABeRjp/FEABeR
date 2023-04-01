@@ -4,18 +4,21 @@ Simply-Supported 'Solid' Square Plate
 問題の説明
 ----------
 
-10m×10m×1mのソリッド要素で構成された直方体のモーダル解析のベンチマークです。The Standard NAFEMS BenchmarksにFV52として掲載されています。
+10m×10m×1mのソリッド要素で構成された直方体のモーダル解析のベンチマークです。
+The Standard NAFEMS BenchmarksにFV52として掲載されています。
 
 条件
 ----
 
-ベンチマークに使用するメッシュは次の通りです。HOEは2次要素、LOEは1次要素でメッシュのパターンを分けています。
+ベンチマークに使用するメッシュは次の通りです。
+HOEは2次要素、LOEは1次要素でメッシュのパターンが異なっています。
 
 .. figure:: simply_supported_solid_square_plate_mesh_HOE.png
 
 .. figure:: simply_supported_solid_square_plate_mesh_LOE.png
 
-条件図を次に示します。図の左端を並進拘束（XY拘束）し、全節点は奥行方向の並進拘束（Z拘束)しています。
+条件図を次に示します。
+図の左端を並進拘束（XY拘束）し、全節点は奥行方向の並進拘束（Z拘束)しています。
 
 .. figure:: simply_supported_solid_square_plate_bc.png
 
@@ -34,7 +37,8 @@ Simply-Supported 'Solid' Square Plate
 結果と考察
 ----------
 
-比較する結果は各モード次数での固有振動数の値です。比較結果を示します。
+比較する結果は各モード次数での固有振動数の値です。
+比較結果を示します。
 
 .. table:: Results (Mode4)
    :widths: auto
