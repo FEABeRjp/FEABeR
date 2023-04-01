@@ -17,6 +17,7 @@
    :caption: 振動:
 
    doc/vibration/cantilevered_tapered_membrane/cantilevered_tapered_membrane.rst
+   doc/vibration/simply_supported_solid_square_plate/simply_supported_solid_square_plate.rst
 
 .. toctree::
    :maxdepth: 1
