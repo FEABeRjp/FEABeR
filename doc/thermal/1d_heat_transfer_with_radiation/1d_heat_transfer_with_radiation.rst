@@ -7,7 +7,14 @@ One dimensional heat transfer with radiation
 1次元方向の熱伝導解析で発生する温度を確認するベンチマークです。The Standard NAFEMS BenchmarksにT2として掲載されています。
 
 定式化
------
+------
+
+温度 :math:`\theta` の熱方程式は次のように書くことができます。
+
+.. math::
+   \frac{\partial }{\partial x}\left(\kappa \frac{\partial \theta}{\partial x}\right)+\frac{\partial }{\ \partial y}\left(\kappa \frac{\partial \theta}{\partial y}\right)+\frac{\partial }{\partial z}\left(\kappa \frac{\partial \theta}{\partial z}\right)=\rho c\frac{\partial \theta}{\partial t}
+
+:math:`\kappa` は熱伝導率、 :math:`\rho` は密度、 :math:`c` は比熱、 :math:`t` は時刻です。
 
 条件
 ----
