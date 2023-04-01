@@ -40,7 +40,7 @@ A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :mat
 
 .. math::
    \left\{\begin{array}{l}
-   \dfrac{\partial }{\partial x}\left(\kappa \dfrac{\partial \theta}{\partial x}\right)+\dfrac{\partial }{\ \partial y}\left(\kappa \dfrac{\partial \theta}{\partial y}\right)+\dfrac{\partial }{\partial z}\left(\kappa \dfrac{\partial \theta}{\partial z}\right)=\rho c\dfrac{\partial \theta}{\partial t}  ~~ \mbox{ in } \Omega,\\
+   \kappa \left(\frac{\partial }{\partial x}\left(\frac{\partial \theta }{\partial x}\right)+\frac{\partial }{\ \partial y}\left(\frac{\partial \theta }{\partial y}\right)+\frac{\partial }{\partial z}\left(\frac{\partial \theta }{\partial z}\right)\right)=\rho c\frac{\partial \theta }{\partial t}  ~~ \mbox{ in } \Omega,\\
    \theta = T_A  ~~ \mbox{ on } d\Omega_A,\\
    -\kappa \dfrac{\partial \theta}{\partial y}=q_B  ~~ \mbox{ on } d\Omega_B,\\
    \kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_C,\\
