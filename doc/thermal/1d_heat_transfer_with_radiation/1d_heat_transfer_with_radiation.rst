@@ -13,23 +13,49 @@ One dimensional heat transfer with radiation
 
 .. figure:: 1d_heat_transfer_with_radiation_mesh.png
 
-条件図を次に示します。A端は1000K、B端は300K常温への放射を定義します。その他は断熱とします。
+条件図を次に示します。
+A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :math:`T_B =` 300K常温への放射を定義します。
+上端C :math:`d\Omega_C` と下端D :math:`d\Omega_D` は断熱とします。
 
 .. figure:: 1d_heat_transfer_with_radiation_bc.png
 
 入力する物性値は次の通りです。
 
-.. table:: 入力した材料物性・その他特性
+.. table:: 材料物性・その他特性
 
-   ======================== ===================
-   材料物性                 入力値
-   ======================== ===================
-   熱伝導率                 55.6 W/m℃
-   比熱                     460.0 J/kg℃
-   密度                     7850 kg/m^3
-   B端の放射率              0.98
-   ステファンボルツマン係数  5.67E-8 Wm^2・K^-4
-   ======================== ===================
+   ======================================= ===================
+   材料物性                                入力値
+   ======================================= ===================
+   熱伝導率  :math:`\kappa`                55.6 W/m℃
+   比熱 :math:`c`                          460.0 J/kg℃
+   密度 :math:`\rho`                       7850 kg/m^3
+   B端の放射率  :math:`\varepsilon`        0.98
+   ステファンボルツマン係数 :math:`\sigma` 5.67E-8 Wm^2・K^-4
+   ======================================= ===================
+
+定式化
+------
+
+温度 :math:`\theta` の熱方程式と境界条件は次のように書くことができます。
+
+.. math::
+   \left\{\begin{array}{l}
+   \dfrac{\partial }{\partial x}\left(\kappa \dfrac{\partial \theta}{\partial x}\right)+\dfrac{\partial }{\ \partial y}\left(\kappa \dfrac{\partial \theta}{\partial y}\right)+\dfrac{\partial }{\partial z}\left(\kappa \dfrac{\partial \theta}{\partial z}\right)=\rho c\dfrac{\partial \theta}{\partial t}  ~~ \mbox{ in } \Omega,\\
+   \theta = T_A  ~~ \mbox{ on } d\Omega_A,\\
+   -\kappa \dfrac{\partial \theta}{\partial y}=q_B  ~~ \mbox{ on } d\Omega_B,\\
+   \kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_C,\\
+   -\kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_D
+   \end{array} \right.
+
+熱流速 :math:`q_B` は次のように考えます。
+
+.. math::
+    q_B=\varepsilon \sigma F\left(\theta ^4-T_B^4\right)=\varepsilon \sigma F\left(\theta -T_B\right)\left(\theta +T_B\right)\left(\theta ^2+T_B^2\right)
+
+形状係数 :math:`F` は1とします。
+また、線形として扱うため、1時間ステップ前の温度 :math:`\theta_{previous}` を使用して次のように定義します。
+ .. math::
+    q_B=\varepsilon \sigma F\left(\theta -T_B\right)\left(\theta_{previous} +T_B\right)\left(\theta_{previous} ^2+T_B^2\right)
 
 結果と考察
 ----------
