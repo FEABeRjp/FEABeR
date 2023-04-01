@@ -15,7 +15,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_mesh_HOE.png
 
-条件図を次に示します。図の左端を並進拘束（XY拘束）し、全節点は奥行方向の並進拘束（Z拘束)しています。
+条件図を次に示します。図の左端を並進拘束（XY拘束）し、全節点は奥行方向の並進拘束（Z拘束）しています。
 
 .. figure:: cantilevered_tapered_membrane_bc.png
 
@@ -34,7 +34,7 @@ Cantilevered tapered membrane
 結果と考察
 ----------
 
-比較する結果は各モード次数での固有振動数の値です。B端の温度です。参照値は927Kです。比較結果を示します。
+比較する結果は各モード次数での固有振動数の値です。比較結果を示します。
 
 .. table:: Results (Mode1)
    :widths: auto
@@ -46,7 +46,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      44.636  ‐ 
    Commercial code  M3D4   1      quad   44.783  99.73%
    Commercial code  M3D8   2      quad   44.636  100.00%
-   Calculix 2.18    M3D4   1      quad   44.946  100.09%
+   CalculiX 2.18    M3D4   1      quad   44.946  100.09%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode1.png
@@ -59,7 +59,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode1.png
 
-   Calculix 1nd order elements (mode1)
+   CalculiX 1st order elements (mode1)
 
 .. table:: Results (Mode2)
    :widths: auto
@@ -71,7 +71,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      130.14  ‐ 
    Commercial code  M3D4   1      quad   130.63  98.87%
    Commercial code  M3D8   2      quad   130.14  100.00%
-   Calculix 2.18    M3D4   1      quad   132.23  100.08%
+   CalculiX 2.18    M3D4   1      quad   132.23  100.08%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode2.png
@@ -84,7 +84,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode2.png
 
-   Calculix 1nd order elements (mode2)
+   CalculiX 1st order elements (mode2)
 
 .. table:: Results (Mode3)
    :widths: auto
@@ -96,7 +96,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      162.72  ‐ 
    Commercial code  M3D4   1      quad   162.59  99.85%
    Commercial code  M3D8   2      quad   162.72  100.00%
-   Calculix 2.18    M3D4   1      quad   162.81  99.99%
+   CalculiX 2.18    M3D4   1      quad   162.81  99.99%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode3.png
@@ -109,7 +109,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode3.png
 
-   Calculix 1nd order elements (mode3)
+   CalculiX 1st order elements (mode3)
 
 .. table:: Results (Mode4)
    :widths: auto
@@ -121,7 +121,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      246.63  ‐ 
    Commercial code  M3D4   1      quad   246.79  97.55%
    Commercial code  M3D8   2      quad   246.63  100.00%
-   Calculix 2.18    M3D4   1      quad   253.20  100.08%
+   CalculiX 2.18    M3D4   1      quad   253.20  100.08%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode4.png
@@ -134,7 +134,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode4.png
 
-   Calculix 1nd order elements (mode4)
+   CalculiX 1st order elements (mode4)
 
 .. table:: Results (Mode5)
    :widths: auto
@@ -146,7 +146,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      382.02  ‐ 
    Commercial code  M3D4   1      quad   379.14  96.40%
    Commercial code  M3D8   2      quad   382.02  100.00%
-   Calculix 2.18    M3D4   1      quad   393.00  99.92%
+   CalculiX 2.18    M3D4   1      quad   393.00  99.92%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode5.png
@@ -159,7 +159,7 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode5.png
 
-   Calculix 1nd order elements (mode5)
+   CalculiX 1st order elements (mode5)
 
 .. table:: Results (Mode6)
    :widths: auto
@@ -171,7 +171,7 @@ Cantilevered tapered membrane
    Reference value  -      2      -      391.55  ‐ 
    Commercial code  M3D4   1      quad   389.83  98.38%
    Commercial code  M3D8   2      quad   391.55  100.00%
-   Calculix 2.18    M3D4   1      quad   396.53  100.07%
+   CalculiX 2.18    M3D4   1      quad   396.53  100.07%
    ================ ====== ====== ====== ======= ========
 
 .. figure:: cantilevered_tapered_membrane_commercial_order1_mode6.png
@@ -184,6 +184,6 @@ Cantilevered tapered membrane
 
 .. figure:: cantilevered_tapered_membrane_calculix_order1_mode6.png
 
-   Calculix 1nd order elements (mode6)
+   CalculiX 1st order elements (mode6)
 
-Calculix1次要素のモード5と6は画像の掲載間違いではなく、出力されているモードは図の通りである。
+CalculiX1次要素のモード5と6は画像の掲載間違いではなく、出力されているモードは図の通りである。
