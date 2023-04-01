@@ -54,7 +54,8 @@ A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :mat
 
 形状係数 :math:`F` は1とします。
 また、線形として扱うため、1時間ステップ前の温度 :math:`\theta_{previous}` を使用して次のように定義します。
- .. math::
+
+.. math::
     q_B=\varepsilon \sigma F\left(\theta -T_B\right)\left(\theta_{previous} +T_B\right)\left(\theta_{previous} ^2+T_B^2\right)
 
 結果と考察
