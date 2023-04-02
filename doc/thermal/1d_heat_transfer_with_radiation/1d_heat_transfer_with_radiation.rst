@@ -42,7 +42,7 @@ A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :mat
    \left\{\begin{array}{l}
    \kappa \left(\dfrac{\partial }{\partial x}\left(\dfrac{\partial \theta }{\partial x}\right)+\dfrac{\partial }{\ \partial y}\left(\dfrac{\partial \theta }{\partial y}\right)+\dfrac{\partial }{\partial z}\left(\dfrac{\partial \theta }{\partial z}\right)\right)=\rho c\dfrac{\partial \theta }{\partial t}  ~~ \mbox{ in } \Omega,\\
    \theta = T_A  ~~ \mbox{ on } d\Omega_A,\\
-   -\kappa \dfrac{\partial \theta}{\partial y}=q_B  ~~ \mbox{ on } d\Omega_B,\\
+   -\kappa \dfrac{\partial \theta}{\partial x}=q_B  ~~ \mbox{ on } d\Omega_B,\\
    \kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_C,\\
    -\kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_D
    \end{array} \right.
