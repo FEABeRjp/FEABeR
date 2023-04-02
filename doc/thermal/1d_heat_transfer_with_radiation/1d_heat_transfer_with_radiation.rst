@@ -10,6 +10,7 @@ One dimensional heat transfer with radiation
 ----
 
 ベンチマークに使用するメッシュは次の通りです。
+メッシュの全体の長さは0.1とします。
 
 .. figure:: 1d_heat_transfer_with_radiation_mesh.png
 
