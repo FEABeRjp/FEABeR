@@ -15,7 +15,7 @@ One dimensional heat transfer with radiation
 .. figure:: 1d_heat_transfer_with_radiation_mesh.png
 
 条件図を次に示します。
-A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :math:`T_B =` 300K常温への放射を定義します。
+A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_B` は :math:`T_B =` 300K常温への放射を定義します。
 上端C :math:`d\Omega_C` と下端D :math:`d\Omega_D` は断熱とします。
 
 .. figure:: 1d_heat_transfer_with_radiation_bc.png
