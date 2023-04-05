@@ -1,4 +1,13 @@
-###############################################################################
+"""
+.. _ref_test_poissons_ratio:
+
+Visualization of Poisson's ratio paraster by finite element method using GetFEM and PyVista
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I saw an educational post using Ansys regarding Poisson's ratio.
+I tried to reproduce it using GetFEM (a finite element analysis library) and PyVista.
+
+"""
 
 import numpy as np
 import getfem as gf
@@ -152,58 +161,58 @@ p.remove_actor(actor21)
 p.remove_actor(actor31)
 p.remove_actor(actor41)
 
-for factor in np.linspace(0.0, 1.0, 10):
-    p.subplot(0, 0)
-    actor00 = p.add_mesh(
-        d0.warp_by_vector(factor=factor),
-        line_width=2,
-        scalars="Displacements",
-        component=1,
-    )
-    actor01 = p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
-    p.subplot(1, 0)
-    actor10 = p.add_mesh(
-        d1.warp_by_vector(factor=factor),
-        line_width=2,
-        scalars="Displacements",
-        component=1,
-    )
-    actor11 = p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
-    p.subplot(2, 0)
-    actor20 = p.add_mesh(
-        d2.warp_by_vector(factor=factor),
-        line_width=2,
-        scalars="Displacements",
-        component=1,
-    )
-    actor21 = p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
-    p.subplot(3, 0)
-    actor30 = p.add_mesh(
-        d3.warp_by_vector(factor=factor),
-        line_width=2,
-        scalars="Displacements",
-        component=1,
-    )
-    actor31 = p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
-    p.subplot(4, 0)
-    actor40 = p.add_mesh(
-        d4.warp_by_vector(factor=factor),
-        line_width=2,
-        scalars="Displacements",
-        component=1,
-    )
-    actor41 = p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
-    p.remove_scalar_bar()
-    p.render()
-    p.write_frame()
-    p.remove_actor(actor00)
-    p.remove_actor(actor01)
-    p.remove_actor(actor10)
-    p.remove_actor(actor11)
-    p.remove_actor(actor20)
-    p.remove_actor(actor21)
-    p.remove_actor(actor30)
-    p.remove_actor(actor31)
-    p.remove_actor(actor40)
-    p.remove_actor(actor41)
-p.close()
+#for factor in np.linspace(0.0, 1.0, 10):
+#    p.subplot(0, 0)
+#    actor00 = p.add_mesh(
+#        d0.warp_by_vector(factor=factor),
+#        line_width=2,
+#        scalars="Displacements",
+#        component=1,
+#    )
+#    actor01 = p.add_mesh(d0.extract_feature_edges(), line_width=2, color="black")
+#    p.subplot(1, 0)
+#    actor10 = p.add_mesh(
+#        d1.warp_by_vector(factor=factor),
+#        line_width=2,
+#        scalars="Displacements",
+#        component=1,
+#    )
+#    actor11 = p.add_mesh(d1.extract_feature_edges(), line_width=2, color="black")
+#    p.subplot(2, 0)
+#    actor20 = p.add_mesh(
+#        d2.warp_by_vector(factor=factor),
+#        line_width=2,
+#        scalars="Displacements",
+#        component=1,
+#    )
+#    actor21 = p.add_mesh(d2.extract_feature_edges(), line_width=2, color="black")
+#    p.subplot(3, 0)
+#    actor30 = p.add_mesh(
+#        d3.warp_by_vector(factor=factor),
+#        line_width=2,
+#        scalars="Displacements",
+#        component=1,
+#    )
+#    actor31 = p.add_mesh(d3.extract_feature_edges(), line_width=2, color="black")
+#    p.subplot(4, 0)
+#    actor40 = p.add_mesh(
+#        d4.warp_by_vector(factor=factor),
+#        line_width=2,
+#        scalars="Displacements",
+#        component=1,
+#    )
+#    actor41 = p.add_mesh(d4.extract_feature_edges(), line_width=2, color="black")
+#    p.remove_scalar_bar()
+#    p.render()
+#    p.write_frame()
+#    p.remove_actor(actor00)
+#    p.remove_actor(actor01)
+#    p.remove_actor(actor10)
+#    p.remove_actor(actor11)
+#    p.remove_actor(actor20)
+#    p.remove_actor(actor21)
+#    p.remove_actor(actor30)
+#    p.remove_actor(actor31)
+#    p.remove_actor(actor40)
+#    p.remove_actor(actor41)
+#p.close()
