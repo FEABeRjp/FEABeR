@@ -8,7 +8,7 @@ FrontISTRはこちらのサイトで公開されています。
 https://www.frontistr.com/index.php
 
 インストール
-============
+~~~~~~~~~~~~
 
 Ubuntu（LinuxネイティブもしくはWSL）
 ------------------------------------
@@ -23,7 +23,7 @@ Ubuntu-20.04の場合は次のコマンドになります。
     curl https://frontistr-commons.gitlab.io/FrontISTR/release/deb/FrontISTR_master-0+ubuntu2004_amd64.deb -O && sudo apt-get install -y ./FrontISTR_master-0+ubuntu2004_amd64.deb
 
 計算実行
-========
+~~~~~~~~
 
 計算実行コマンドの例を示します。コマンドを実行する場合はインプットを置いているフォルダに移動してからコマンドを実行します。この場合は1CPUでの計算になります。
 
