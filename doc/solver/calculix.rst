@@ -17,7 +17,9 @@ http://www.calculix.de/
 Ubuntu（LinuxもしくはWSL）
 ----------------------------
 
-バイナリ版は `公式ページ <http://www.dhondt.de/>`_ の"a Linux executable"からダウンロードできます。現時点ではバイナリ版はUbnutu-22.04にgfortran-7がインストールできないため、実行時にエラーで動きません。Ubnutuを使う人はUbuntu-20.04以前を使ってください。
+バイナリ版は `公式ページ <http://www.dhondt.de/>`_ の"a Linux executable"からダウンロードできます。
+2023年6月18日時点ではバイナリ版はUbnutu-22.04にgfortran-7がインストールできないため、実行時にエラーで動作しません。
+Ubnutuを使う人はUbuntu-20.04以前を使用してください。
 
 .. figure:: calculix_fig001.png
 
