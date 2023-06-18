@@ -6,3 +6,43 @@ CalculiXは有限要素法を使用したオープンソースの解析コード
 CalculiXについては次のサイトで公開されています。
 
 http://www.calculix.de/
+
+
+インストール
+=============
+
+最新版を使いたい場合はコンパイルが必要になります。
+
+バイナリ版で導入する場合の手順を説明します。
+
+Ubuntu（LinuxネイティブもしくはWSL）
+------------------------------------
+
+バイナリ版は `公式ページ <http://www.dhondt.de/>`_ の"a Linux executable"からダウンロードできます。現時点ではバイナリ版はUbnutu-22.04にgfortran-7がインストールできないため、実行時にエラーで動きません。Ubnutuを使う人はUbuntu-20.04以前を使ってください。
+
+.. figure:: calculix_fig001.png
+
+ダウンロードしたtar.bz2ファイルは次のコマンドで解凍できます。
+
+.. code-block::
+
+    sudo cp ccx_2.20.tar.bz2 /usr/local
+    cd /usr/local
+    sudo tar jxvf ./ccx_2.20.tar.bz2
+    sudo cp ./CalculiX/ccx_2.20/src/ccx_2.20 ../bin
+
+計算実行
+========
+
+計算を実行する場合は次のコマンドで実行します。<jobname>のところは実行する計算インプットのファイル名を入力します。拡張子は除きます。
+
+.. code-block::
+
+    ccx_2.20 -i <jobname>
+
+libgfortran.so.4に関するエラーが表示された場合は、gfortran-7をインストールします。
+
+.. code-block:: 
+
+    sudo apt update
+    sudo apt install gfortran-7
