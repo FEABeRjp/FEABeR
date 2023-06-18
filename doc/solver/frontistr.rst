@@ -14,7 +14,7 @@ https://www.frontistr.com/index.php
 Ubuntu（LinuxもしくはWSL）
 ------------------------------------
 
-`公式ページ <https://www.frontistr.com/download/>`_ からダウンロードができます。
+`公式ページ <https://www.frontistr.com/download/>`_ からダウンロードすることができます。
 FrontISTR CommonsはFrontISTRをUbuntuで実行するインストールコマンドを用意しています。
 ただし、2023年6月18日時点ではUbuntu-22.04だとコマンド実行時にエラーメッセージが表示されインストールを実行できません。
 
