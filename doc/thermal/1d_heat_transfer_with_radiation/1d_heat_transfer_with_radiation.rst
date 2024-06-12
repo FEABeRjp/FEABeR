@@ -10,11 +10,12 @@ One dimensional heat transfer with radiation
 ----
 
 ベンチマークに使用するメッシュは次の通りです。
+メッシュの全体の長さは0.1とします。
 
 .. figure:: 1d_heat_transfer_with_radiation_mesh.png
 
 条件図を次に示します。
-A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :math:`T_B =` 300K常温への放射を定義します。
+A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_B` は :math:`T_B =` 300K常温への放射を定義します。
 上端C :math:`d\Omega_C` と下端D :math:`d\Omega_D` は断熱とします。
 
 .. figure:: 1d_heat_transfer_with_radiation_bc.png
@@ -40,9 +41,9 @@ A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :mat
 
 .. math::
    \left\{\begin{array}{l}
-   \dfrac{\partial }{\partial x}\left(\kappa \dfrac{\partial \theta}{\partial x}\right)+\dfrac{\partial }{\ \partial y}\left(\kappa \dfrac{\partial \theta}{\partial y}\right)+\dfrac{\partial }{\partial z}\left(\kappa \dfrac{\partial \theta}{\partial z}\right)=\rho c\dfrac{\partial \theta}{\partial t}  ~~ \mbox{ in } \Omega,\\
+   \kappa \left(\dfrac{\partial }{\partial x}\left(\dfrac{\partial \theta }{\partial x}\right)+\dfrac{\partial }{\ \partial y}\left(\dfrac{\partial \theta }{\partial y}\right)+\dfrac{\partial }{\partial z}\left(\dfrac{\partial \theta }{\partial z}\right)\right)=\rho c\dfrac{\partial \theta }{\partial t}  ~~ \mbox{ in } \Omega,\\
    \theta = T_A  ~~ \mbox{ on } d\Omega_A,\\
-   -\kappa \dfrac{\partial \theta}{\partial y}=q_B  ~~ \mbox{ on } d\Omega_B,\\
+   -\kappa \dfrac{\partial \theta}{\partial x}=q_B  ~~ \mbox{ on } d\Omega_B,\\
    \kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_C,\\
    -\kappa \dfrac{\partial \theta}{\partial z}=0  ~~ \mbox{ on } d\Omega_D
    \end{array} \right.
@@ -53,8 +54,9 @@ A端 :math:`d\Omega_A` は :math:`T_A =` 1000K、B端 :math:`d\Omega_A` は :mat
     q_B=\varepsilon \sigma F\left(\theta ^4-T_B^4\right)=\varepsilon \sigma F\left(\theta -T_B\right)\left(\theta +T_B\right)\left(\theta ^2+T_B^2\right)
 
 形状係数 :math:`F` は1とします。
-また、線形として扱うため、1時間ステップ前の温度 :math:`\theta_{previous}` を使用して次のように定義します。
- .. math::
+また、線形として扱うため、時間1ステップ前の温度 :math:`\theta_{previous}` を使用して次のように定義します。
+
+.. math::
     q_B=\varepsilon \sigma F\left(\theta -T_B\right)\left(\theta_{previous} +T_B\right)\left(\theta_{previous} ^2+T_B^2\right)
 
 結果と考察
