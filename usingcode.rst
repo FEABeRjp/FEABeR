@@ -10,3 +10,4 @@
    doc/solver/codeaster.rst
    doc/solver/frontistr.rst
    doc/solver/getfem.rst
+   doc/solver/elmer.rst

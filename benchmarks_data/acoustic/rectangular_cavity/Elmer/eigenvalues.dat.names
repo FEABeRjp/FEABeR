@@ -1,0 +1,19 @@
+Metadata for SaveScalars file: ./eigenvalues.dat
+Elmer version: 26.2
+Elmer revision: Release
+Elmer compilation date: 2026-05-15
+Solver input file: case.sif
+File started at: 2026/05/22 22:02:38
+ 
+Variables in columns of matrix: 
+   1: eigen: re value 1
+   2: eigen: re value 2
+   3: eigen: re value 3
+   4: eigen: re value 4
+   5: eigen: re value 5
+   6: eigen: re value 6
+   7: eigen: re value 7
+   8: eigen: re value 8
+   9: eigen: re value 9
+  10: eigen: re value 10
+  11: eigen: re value 11
