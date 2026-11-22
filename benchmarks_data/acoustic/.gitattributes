@@ -1,0 +1,2 @@
+# Preserve the original Elmer output, including line endings and spacing.
+**/eigenvalues.dat* -text whitespace=-trailing-space,cr-at-eol
